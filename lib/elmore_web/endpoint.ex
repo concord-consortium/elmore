@@ -42,5 +42,7 @@ defmodule ElmoreWeb.Endpoint do
     key: "_elmore_key",
     signing_salt: "BGSL698K"
 
+  plug CORSPlug, origin: ["*"]
+
   plug ElmoreWeb.Router
 end

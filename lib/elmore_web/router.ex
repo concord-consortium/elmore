@@ -10,6 +10,7 @@ defmodule ElmoreWeb.Router do
   end
 
   pipeline :api do
+    plug CORSPlug, origin: "*"
     plug :accepts, ["json"]
   end
 
@@ -24,6 +25,6 @@ defmodule ElmoreWeb.Router do
   scope "/api", ElmoreWeb do
     pipe_through :api
 
-    post "/logs", LogController, :create
+    post "/logs", LogApiController, :create
   end
 end

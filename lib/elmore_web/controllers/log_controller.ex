@@ -14,17 +14,6 @@ defmodule ElmoreWeb.LogController do
     render(conn, "new.html", changeset: changeset)
   end
 
-  def create(%{private: %{phoenix_format: "json"}} = conn, %{"log" => log_params}) do
-    IO.inspect(conn)
-    case LogManager.create_log(log_params) do
-      {:ok, log} ->
-        render(conn, "log.json", log)
-
-      {:error, %Ecto.Changeset{} = changeset} ->
-        render(conn, "log.json", changeset)
-    end
-  end
-
   def create(conn, %{"log" => log_params}) do
     case LogManager.create_log(log_params) do
       {:ok, log} ->

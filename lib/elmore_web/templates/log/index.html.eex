@@ -1,0 +1,44 @@
+<h1>Listing Logs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Session</th>
+      <th>Username</th>
+      <th>Application</th>
+      <th>Activity</th>
+      <th>Event</th>
+      <th>Time</th>
+      <th>Parameters</th>
+      <th>Extras</th>
+      <th>Event value</th>
+      <th>Run remote endpoint</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for log <- @logs do %>
+    <tr>
+      <td><%= log.session %></td>
+      <td><%= log.username %></td>
+      <td><%= log.application %></td>
+      <td><%= log.activity %></td>
+      <td><%= log.event %></td>
+      <td><%= log.time %></td>
+      <td><%= log.parameters %></td>
+      <td><%= log.extras %></td>
+      <td><%= log.event_value %></td>
+      <td><%= log.run_remote_endpoint %></td>
+
+      <td>
+        <%= link "Show", to: Routes.log_path(@conn, :show, log) %>
+        <%= link "Edit", to: Routes.log_path(@conn, :edit, log) %>
+        <%= link "Delete", to: Routes.log_path(@conn, :delete, log), method: :delete, data: [confirm: "Are you sure?"] %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Log", to: Routes.log_path(@conn, :new) %></span>

@@ -1,0 +1,58 @@
+<h1>Show Log</h1>
+
+<ul>
+
+  <li>
+    <strong>Session:</strong>
+    <%= @log.session %>
+  </li>
+
+  <li>
+    <strong>Username:</strong>
+    <%= @log.username %>
+  </li>
+
+  <li>
+    <strong>Application:</strong>
+    <%= @log.application %>
+  </li>
+
+  <li>
+    <strong>Activity:</strong>
+    <%= @log.activity %>
+  </li>
+
+  <li>
+    <strong>Event:</strong>
+    <%= @log.event %>
+  </li>
+
+  <li>
+    <strong>Time:</strong>
+    <%= @log.time %>
+  </li>
+
+  <li>
+    <strong>Parameters:</strong>
+    <%= @log.parameters %>
+  </li>
+
+  <li>
+    <strong>Extras:</strong>
+    <%= @log.extras %>
+  </li>
+
+  <li>
+    <strong>Event value:</strong>
+    <%= @log.event_value %>
+  </li>
+
+  <li>
+    <strong>Run remote endpoint:</strong>
+    <%= @log.run_remote_endpoint %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.log_path(@conn, :edit, @log) %></span>
+<span><%= link "Back", to: Routes.log_path(@conn, :index) %></span>

@@ -1,0 +1,51 @@
+<%= form_for @changeset, @action, fn f -> %>
+  <%= if @changeset.action do %>
+    <div class="alert alert-danger">
+      <p>Oops, something went wrong! Please check the errors below.</p>
+    </div>
+  <% end %>
+
+  <%= label f, :session %>
+  <%= text_input f, :session %>
+  <%= error_tag f, :session %>
+
+  <%= label f, :username %>
+  <%= text_input f, :username %>
+  <%= error_tag f, :username %>
+
+  <%= label f, :application %>
+  <%= text_input f, :application %>
+  <%= error_tag f, :application %>
+
+  <%= label f, :activity %>
+  <%= text_input f, :activity %>
+  <%= error_tag f, :activity %>
+
+  <%= label f, :event %>
+  <%= text_input f, :event %>
+  <%= error_tag f, :event %>
+
+  <%= label f, :time %>
+  <%= datetime_select f, :time %>
+  <%= error_tag f, :time %>
+
+  <%= label f, :parameters %>
+  <%= text_input f, :parameters %>
+  <%= error_tag f, :parameters %>
+
+  <%= label f, :extras %>
+  <%= text_input f, :extras %>
+  <%= error_tag f, :extras %>
+
+  <%= label f, :event_value %>
+  <%= text_input f, :event_value %>
+  <%= error_tag f, :event_value %>
+
+  <%= label f, :run_remote_endpoint %>
+  <%= text_input f, :run_remote_endpoint %>
+  <%= error_tag f, :run_remote_endpoint %>
+
+  <div>
+    <%= submit "Save" %>
+  </div>
+<% end %>

@@ -55,6 +55,31 @@ defmodule Elmore.LogManager do
     |> Repo.insert()
   end
 
+  defp event_value(%{"event_value" => val}) when is_integer(val), do: Integer.to_string(val)
+  defp event_value(%{"event_value" => val}), do: val
+
+  def create_log_from_api(attrs \\ %{}) do
+    default_log = %{
+      "session"=> "",
+      "application"=> "",
+      "activity"=> "",
+      "event"=> "",
+      "time"=> 0,
+      "event_value"=> ""
+    }
+    {defined_log, extras} = default_log
+     |> Map.merge(attrs)
+     |> Map.split(Map.keys(default_log))
+    {:ok, time} = DateTime.from_unix(defined_log["time"], :millisecond)
+    defined_attrs = defined_log
+      |> Map.put("event_value", event_value(defined_log))
+      |> Map.put("extras", Jason.encode!(extras))
+      |> Map.put("time", time)
+    %Log{}
+      |> Log.changeset(defined_attrs)
+      |> Repo.insert()
+  end
+
   @doc """
   Updates a log.
 

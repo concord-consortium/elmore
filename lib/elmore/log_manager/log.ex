@@ -2,6 +2,8 @@ defmodule Elmore.LogManager.Log do
   use Ecto.Schema
   import Ecto.Changeset
 
+  @derive {Jason.Encoder, except: [:__meta__, :__struct__]}
+
   schema "logs" do
     field :activity, :string
     field :application, :string
@@ -21,6 +23,6 @@ defmodule Elmore.LogManager.Log do
   def changeset(log, attrs) do
     log
     |> cast(attrs, [:session, :username, :application, :activity, :event, :time, :parameters, :extras, :event_value, :run_remote_endpoint])
-    |> validate_required([:session, :username, :application, :activity, :event, :time, :parameters, :extras, :event_value, :run_remote_endpoint])
+    # |> validate_required([:session, :username, :application, :activity, :event, :time, :parameters, :extras, :event_value, :run_remote_endpoint])
   end
 end

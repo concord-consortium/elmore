@@ -1,4 +1,4 @@
-defmodule HelloPhoenix.FirehoseChannel do
+defmodule ElmoreWeb.FirehoseChannel do
   use Phoenix.Channel
 
   def join("firehose:all", _message, socket) do
